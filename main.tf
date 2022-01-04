@@ -107,27 +107,27 @@ resource "aws_instance" "EC2-Instance" {
     provisioner "remote-exec" {
 
 	        inline = [
-			 	                            "sudo apt-get update -y",
-        			                      "sudo apt install apt-transport-https ca-certificates curl software-properties-common -y",
-        		                       	"sudo curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -",
+			 	                    "sudo apt-get update -y",
+        			                    "sudo apt install apt-transport-https ca-certificates curl software-properties-common -y",
+        		                       	    "sudo curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -",
        			  	                    "sudo add-apt-repository 'deb [arch=amd64] https://download.docker.com/linux/ubuntu bionic stable'",
        			  	                    "sudo apt update",
-        		                       	"sudo apt-cache policy docker-ce -y",
+        		                            "sudo apt-cache policy docker-ce -y",
        			  	                    "sudo apt install docker-ce -y",
-             		                   	"sudo git clone https://github.com/pathakbhaskar/samplequest",
-             			                  "cd samplequest",
-             			                  "sudo docker build -t samplequest1 .",
-                                    "sudo docker run -d -p 3000:3000 samplequest1",
-                                    "sudo echo 'Done'",
+             		                   	    "sudo git clone https://github.com/pathakbhaskar/samplequest",
+             			                    "cd samplequest",
+             			                    "sudo docker build -t samplequest1 .",
+                                                    "sudo docker run -d -p 3000:3000 samplequest1",
+                                                    "sudo echo 'Done'",
 
-			            ]
+		       ]
 	}
   
    connection {
 		
-		          type = "ssh"
-		          host = self.public_ip
-		          user = "ubuntu"
+		    type = "ssh"
+		    host = self.public_ip
+		    user = "ubuntu"
 	      	    private_key = "file(c:\\key-pair\\23deykey.pem)"
    }
  }
